@@ -49,9 +49,7 @@ document.querySelector('.scroll-indicator').addEventListener('click', function()
 
 // Form submission handling
 document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
-    
-    // Get form elements
+    // Don't prevent default - let Web3Forms handle the submission
     const submitButton = this.querySelector('button[type="submit"]');
     const originalText = submitButton.innerHTML;
     
@@ -59,18 +57,11 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     submitButton.innerHTML = '<span class="loading"></span> Sending...';
     submitButton.disabled = true;
     
-    // Simulate form submission (replace with actual form handling)
+    // Re-enable button after a delay (Web3Forms will handle the actual submission)
     setTimeout(() => {
-        // Reset button
         submitButton.innerHTML = originalText;
         submitButton.disabled = false;
-        
-        // Show success message
-        showNotification('Message sent successfully! We\'ll get back to you soon.', 'success');
-        
-        // Reset form
-        this.reset();
-    }, 2000);
+    }, 3000);
 });
 
 // Newsletter form handling
@@ -192,13 +183,12 @@ document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
 });
 
 // Get Quote button functionality
-document.querySelector('.nav-cta-btn').addEventListener('click', function(e) {
-    e.preventDefault();
+function scrollToContact() {
     document.querySelector('#contact').scrollIntoView({
         behavior: 'smooth'
     });
     showNotification('Ready to get started? Fill out the form below!', 'info');
-});
+}
 
 // Typing effect for hero title
 function typeWriter(element, text, speed = 100) {

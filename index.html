@@ -28,7 +28,7 @@
                     <li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                     <li class="nav-item">
-                        <button class="btn btn-outline-primary nav-cta-btn">
+                        <button class="btn btn-outline-primary nav-cta-btn" onclick="scrollToContact()">
                             <i class="bi bi-telephone-fill me-1"></i>Get Quote
                         </button>
                     </li>
@@ -468,21 +468,27 @@
             </div>
             <div class="row">
                 <div class="col-lg-8 mx-auto">
-                    <form id="contactForm" class="contact-form">
+                    <form action="https://api.web3forms.com/submit" method="POST" id="contactForm" class="contact-form">
+                        <!-- Web3Forms Access Key -->
+                        <input type="hidden" name="access_key" value="6964f5ae-e5b4-4f53-a119-11e42a9578b2">
+                        
+                        <!-- Honeypot Spam Protection -->
+                        <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+                        
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <input type="text" class="form-control" placeholder="Your Name" required>
+                                <input type="text" name="name" class="form-control" placeholder="Your Name" required>
                             </div>
                             <div class="col-md-6 mb-3">
-                                <input type="email" class="form-control" placeholder="Your Email" required>
+                                <input type="email" name="email" class="form-control" placeholder="Your Email" required>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-md-6 mb-3">
-                                <input type="tel" class="form-control" placeholder="Phone Number">
+                                <input type="tel" name="phone" class="form-control" placeholder="Phone Number">
                             </div>
                             <div class="col-md-6 mb-3">
-                                <select class="form-control">
+                                <select name="service" class="form-control">
                                     <option>Select Service</option>
                                     <option>Software Development</option>
                                     <option>Cloud Solutions</option>
@@ -494,7 +500,7 @@
                             </div>
                         </div>
                         <div class="mb-3">
-                            <textarea class="form-control" rows="5" placeholder="Tell us about your project" required></textarea>
+                            <textarea name="message" class="form-control" rows="5" placeholder="Tell us about your project" required></textarea>
                         </div>
                         <div class="text-center">
                             <button type="submit" class="btn btn-primary btn-lg">Send Message</button>
