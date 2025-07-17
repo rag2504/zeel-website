@@ -182,14 +182,6 @@ document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
     });
 });
 
-// Get Quote button functionality
-function scrollToContact() {
-    document.querySelector('#contact').scrollIntoView({
-        behavior: 'smooth'
-    });
-    showNotification('Ready to get started? Fill out the form below!', 'info');
-}
-
 // Typing effect for hero title
 function typeWriter(element, text, speed = 100) {
     let i = 0;
