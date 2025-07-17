@@ -191,6 +191,15 @@ document.querySelectorAll('.navbar-nav .nav-link').forEach(link => {
     });
 });
 
+// Get Quote button functionality
+document.querySelector('.nav-cta-btn').addEventListener('click', function(e) {
+    e.preventDefault();
+    document.querySelector('#contact').scrollIntoView({
+        behavior: 'smooth'
+    });
+    showNotification('Ready to get started? Fill out the form below!', 'info');
+});
+
 // Typing effect for hero title
 function typeWriter(element, text, speed = 100) {
     let i = 0;
@@ -263,6 +272,11 @@ const counterObserver = new IntersectionObserver((entries) => {
 document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('.stat-number').forEach(counter => {
         counterObserver.observe(counter);
+    });
+    
+    // Initialize testimonial animations
+    document.querySelectorAll('.testimonial-card').forEach(card => {
+        observer.observe(card);
     });
 });
 
@@ -352,6 +366,21 @@ const imageObserver = new IntersectionObserver((entries) => {
 document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('img[data-src]').forEach(img => {
         imageObserver.observe(img);
+    });
+    
+    // FAQ accordion enhancements
+    document.querySelectorAll('.accordion-button').forEach(button => {
+        button.addEventListener('click', function() {
+            // Add smooth scroll to FAQ item when opened
+            setTimeout(() => {
+                if (!this.classList.contains('collapsed')) {
+                    this.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'center'
+                    });
+                }
+            }, 350);
+        });
     });
 });
 
